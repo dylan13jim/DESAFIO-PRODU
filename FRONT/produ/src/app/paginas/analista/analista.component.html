@@ -1,0 +1,196 @@
+<!-- src/app/paginas/analista/analista.component.html -->
+<app-encabezado></app-encabezado>
+
+<main class="analista-dashboard">
+  <div class="container">
+    
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1>Dashboard Analista</h1>
+      <p>Bienvenido {{ usuario?.nombre || usuario?.firstName + ' ' + usuario?.lastName }}</p>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="stats-grid">
+      <div class="stat-card total">
+        <div class="stat-icon">📊</div>
+        <div class="stat-info">
+          <h3>{{ obtenerContadores().total }}</h3>
+          <p>Total Creadas</p>
+        </div>
+      </div>
+      
+      <div class="stat-card pendientes">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-info">
+          <h3>{{ obtenerContadores().pendientes }}</h3>
+          <p>Pendientes</p>
+        </div>
+      </div>
+      
+      <div class="stat-card aprobadas">
+        <div class="stat-icon">✅</div>
+        <div class="stat-info">
+          <h3>{{ obtenerContadores().aprobadas }}</h3>
+          <p>Aprobadas</p>
+        </div>
+      </div>
+      
+      <div class="stat-card rechazadas">
+        <div class="stat-icon">❌</div>
+        <div class="stat-info">
+          <h3>{{ obtenerContadores().rechazadas }}</h3>
+          <p>Rechazadas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acciones principales -->
+    <div class="acciones-principales">
+      <button class="btn btn-crear" (click)="abrirFormulario()">
+        ➕ Crear Nueva Promoción
+      </button>
+    </div>
+
+    <!-- Mis Promociones -->
+    <div class="mis-promociones">
+      <h2>Mis Promociones</h2>
+      
+      <div *ngIf="obtenerMisPromociones().length === 0" class="no-promociones">
+        <p>Aún no has creado ninguna promoción</p>
+        <button class="btn btn-crear" (click)="abrirFormulario()">
+          Crear tu primera promoción
+        </button>
+      </div>
+
+      <div class="promociones-grid">
+        <div 
+          *ngFor="let promocion of obtenerMisPromociones()" 
+          class="promocion-card"
+          [class]="promocion.estado">
+          
+          <div class="promocion-header">
+            <h3>{{ promocion.producto.product_name }}</h3>
+            <span class="estado-badge" [class]="promocion.estado">
+              {{ promocion.estado | titlecase }}
+            </span>
+          </div>
+
+          <div class="promocion-info">
+            <div class="precio-info">
+                <div class="precio-original">${{ promocion.producto.product_list_price }}</div>
+                <div class="precio-promo">${{ promocion.precio_promocional }}</div>
+                <div class="descuento">{{ promocion.descuento_porcentaje }}% OFF</div>
+            </div>
+            
+            <div class="detalles">
+              <p><strong>Cantidad:</strong> {{ promocion.cantidad_promocional }} unidades</p>
+              <p><strong>Fecha creación:</strong> {{ formatearFecha(promocion.fecha_creacion) }}</p>
+              <p *ngIf="promocion.comentarios"><strong>Comentarios:</strong> {{ promocion.comentarios }}</p>
+              <p *ngIf="promocion.fecha_revision"><strong>Revisado:</strong> {{ formatearFecha(promocion.fecha_revision) }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal para crear promoción -->
+<div class="modal-overlay" *ngIf="mostrarFormulario" (click)="cerrarFormulario()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>Crear Nueva Promoción</h3>
+      <button class="btn-cerrar" (click)="cerrarFormulario()">×</button>
+    </div>
+    
+    <div class="modal-body">
+      
+      <!-- Mensajes -->
+      <div class="error" *ngIf="error">{{ error }}</div>
+      <div class="success" *ngIf="success">{{ success }}</div>
+      
+      <!-- Paso 1: Seleccionar producto -->
+      <div class="paso" *ngIf="!productoSeleccionado">
+        <h4>Paso 1: Selecciona un producto</h4>
+        <div class="productos-grid">
+          <div 
+            *ngFor="let producto of productos" 
+            class="producto-card"
+            (click)="seleccionarProducto(producto)">
+            
+            <h5>{{ producto.product_name }}</h5>
+            <div class="producto-info">
+              <p><strong>Precio:</strong> ${{ producto.product_list_price }}</p>
+              <p><strong>Cantidad:</strong> {{ producto.product_min_promo_quantity }}-{{ producto.product_max_promo_quantity }}</p>
+              <p><strong>Precio mín:</strong> ${{ producto.product_min_promo_price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paso 2: Configurar promoción -->
+      <div class="paso" *ngIf="productoSeleccionado">
+        <h4>Paso 2: Configura la promoción</h4>
+        
+        <div class="producto-seleccionado">
+          <h5>{{ productoSeleccionado.product_name }}</h5>
+          <p>Precio normal: ${{ productoSeleccionado.product_list_price }}</p>
+          <button class="btn-cambiar" (click)="productoSeleccionado = null">Cambiar producto</button>
+        </div>
+
+        <div class="formulario-promocion">
+          <div class="field">
+            <label>Cantidad promocional:</label>
+            <input 
+              type="number" 
+              [(ngModel)]="cantidadPromocional"
+              name="cantidad"
+              [min]="productoSeleccionado.product_min_promo_quantity"
+              [max]="productoSeleccionado.product_max_promo_quantity"
+              placeholder="Cantidad a promocionar">
+            <small>Rango permitido: {{ productoSeleccionado.product_min_promo_quantity }} - {{ productoSeleccionado.product_max_promo_quantity }}</small>
+          </div>
+
+          <div class="field">
+            <label>Precio promocional:</label>
+            <input 
+              type="number" 
+              step="0.01"
+              [(ngModel)]="precioPromocional"
+              name="precio"
+              [min]="productoSeleccionado.product_min_promo_price"
+              [max]="productoSeleccionado.product_list_price - 0.01"
+              placeholder="Precio promocional">
+            <small>Precio mínimo: ${{ productoSeleccionado.product_min_promo_price }}</small>
+          </div>
+
+          <!-- Preview de la promoción -->
+          <div class="preview-promocion" *ngIf="cantidadPromocional > 0 && precioPromocional > 0">
+            <h5>Vista previa:</h5>
+            <div class="preview-content">
+              <p><strong>Descuento:</strong> {{ calcularDescuento() }}% OFF</p>
+              <p><strong>Ahorro:</strong> ${{ (productoSeleccionado.product_list_price - precioPromocional).toFixed(2) }} por unidad</p>
+              <p><strong>Ahorro total:</strong> ${{ ((productoSeleccionado.product_list_price - precioPromocional) * cantidadPromocional).toFixed(2) }}</p>
+            </div>
+            
+            <!-- Validación -->
+            <div class="validacion" [class.valida]="validarPromocion().esValida" [class.invalida]="!validarPromocion().esValida">
+              {{ validarPromocion().mensaje }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-footer" *ngIf="productoSeleccionado">
+      <button class="btn btn-cancelar" (click)="cerrarFormulario()">Cancelar</button>
+      <button 
+        class="btn btn-crear"
+        [disabled]="!validarPromocion().esValida"
+        (click)="crearPromocion()">
+        Crear Promoción
+      </button>
+    </div>
+  </div>
+</div>

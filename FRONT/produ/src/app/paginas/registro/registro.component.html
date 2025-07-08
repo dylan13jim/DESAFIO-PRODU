@@ -1,0 +1,150 @@
+<main class="registro-page">
+    <div class="registro-container">
+      
+      
+      
+        <div class="registro-card">
+            <h1>Registrarse</h1>
+            <p class="subtitulo">Crea tu cuenta en PromoManager</p>
+            
+            <!-- Mensaje de error -->
+            <div class="error" *ngIf="error">{{ error }}</div>
+            
+            <!-- Mensaje de éxito -->
+            <div class="success" *ngIf="success">{{ success }}</div>
+            
+            <!-- Formulario -->
+            <form (ngSubmit)="registro()">
+            
+            <!-- Información Personal -->
+            <div class="seccion">
+                <h3>Información Personal</h3>
+                
+                <div class="fila">
+                <div class="field">
+                    <label>Nombre:</label>
+                    <input 
+                    type="text" 
+                    [(ngModel)]="firstName" 
+                    name="firstName"
+                    placeholder="Tu nombre">
+                </div>
+                
+                <div class="field">
+                    <label>Apellido:</label>
+                    <input 
+                    type="text" 
+                    [(ngModel)]="lastName" 
+                    name="lastName"
+                    placeholder="Tu apellido">
+                </div>
+                </div>
+                
+                <div class="field">
+                <label>Email:</label>
+                <input 
+                    type="email" 
+                    [(ngModel)]="email" 
+                    name="email"
+                    placeholder="tu.email&#64;empresa.com">
+                </div>
+                
+                <div class="field">
+                <label>Teléfono:</label>
+                <input 
+                    type="tel" 
+                    [(ngModel)]="phone" 
+                    name="phone"
+                    placeholder="+1 234 567 8900">
+                </div>
+            </div>
+            
+            <!-- Ubicación -->
+            <div class="seccion">
+                <h3>Ubicación</h3>
+                
+                <div class="fila">
+                <div class="field">
+                    <label>País:</label>
+                    <select [(ngModel)]="country" name="country">
+                    <option value="">Selecciona país</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Mexico">México</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Chile">Chile</option>
+                    <option value="Peru">Perú</option>
+                    <option value="Spain">España</option>
+                    <option value="Spain">Ecuador</option>
+                    </select>
+                </div>
+                
+                <div class="field">
+                    <label>Ciudad:</label>
+                    <input 
+                    type="text" 
+                    [(ngModel)]="city" 
+                    name="city"
+                    placeholder="Tu ciudad">
+                </div>
+                </div>
+            </div>
+            
+            <!-- Credenciales -->
+            <div class="seccion">
+                <h3>Credenciales de Acceso</h3>
+                
+                <div class="field">
+                <label>Ultimatix:</label>
+                <input 
+                    type="text" 
+                    [(ngModel)]="ultimatix" 
+                    name="ultimatix"
+                    placeholder="Mínimo 7 caracteres">
+                </div>
+                
+                <div class="field">
+                <label>Rol:</label>
+                <select [(ngModel)]="rol" name="rol">
+                    <option value="">Selecciona tu rol</option>
+                    <option value="analyst">Analista de Mercado</option>
+                    <option value="manager">Gerente de Ventas</option>
+                </select>
+                </div>
+                
+                <div class="fila">
+                <div class="field">
+                    <label>Contraseña:</label>
+                    <input 
+                    type="password" 
+                    [(ngModel)]="password" 
+                    name="password"
+                    placeholder="Mínimo 6 caracteres">
+                </div>
+                
+                <div class="field">
+                    <label>Confirmar Contraseña:</label>
+                    <input 
+                    type="password" 
+                    [(ngModel)]="confirmPassword" 
+                    name="confirmPassword"
+                    placeholder="Repite la contraseña">
+                </div>
+                </div>
+            </div>
+            
+            <!-- Botón -->
+            <button type="submit" class="btn-registro">Crear Cuenta</button>
+            
+            </form>
+            
+            <!-- Footer -->
+            <div class="registro-footer">
+            <p>¿Ya tienes una cuenta?</p>
+            <button type="button" class="btn-link" (click)="irALogin()">
+                Iniciar Sesión
+            </button>
+            </div>
+            
+        </div>
+    </div>
+</main>

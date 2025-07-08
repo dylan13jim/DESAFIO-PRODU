@@ -1,0 +1,194 @@
+/* src/app/paginas/registro/registro.component.scss */
+
+.registro-page {
+    min-height: calc(100vh - 70px);
+    background-image: url('https://www.freepik.es/fotos-premium/molecula-fondo-grafico-geometrico-comunicacion-complejo-big-data-compuestos-plexo-lineas-matriz-minima-visualizacion-datos-digitales-ilustracion-cientifica-cibernetica_21010418.htm#fromView=search&page=3&position=12&uuid=2ac5b4cd-9cc8-418f-80bd-61b71f6b2c92&query=fondo+tecnologia');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .registro-container {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .btn-back {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .btn-back:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  .registro-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 28px;
+  }
+  
+  .subtitulo {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+  
+  .error {
+    background: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ffcdd2;
+  }
+  
+  .success {
+    background: #e8f5e8;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #c8e6c9;
+  }
+  
+  .seccion {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .seccion:last-of-type {
+    border-bottom: none;
+    margin-bottom: 20px;
+  }
+  
+  .seccion h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .fila {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+  
+  .field {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  input:focus, select:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+  
+  .btn-registro {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-registro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+  }
+  
+  .registro-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: #666;
+  }
+  
+  .registro-footer p {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+  }
+  
+  .btn-link {
+    background: none;
+    border: none;
+    color: #667eea;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+  }
+  
+  .btn-link:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+  }
+  
+  @media (max-width: 768px) {
+    .registro-card {
+      padding: 30px 25px;
+    }
+    
+    .fila {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    
+    h1 {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .registro-card {
+      padding: 25px 20px;
+    }
+    
+    .registro-container {
+      max-width: 100%;
+    }
+}

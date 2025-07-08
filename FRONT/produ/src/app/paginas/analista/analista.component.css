@@ -1,0 +1,525 @@
+/* src/app/paginas/analista/analista.component.css */
+
+.analista-dashboard {
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px 20px;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  
+  .dashboard-header p {
+    font-size: 18px;
+    opacity: 0.9;
+  }
+  
+  /* Estadísticas */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .stat-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .stat-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stat-icon {
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .stat-card.total .stat-icon {
+    background: #e3f2fd;
+  }
+  
+  .stat-card.pendientes .stat-icon {
+    background: #fff3cd;
+  }
+  
+  .stat-card.aprobadas .stat-icon {
+    background: #d1edff;
+  }
+  
+  .stat-card.rechazadas .stat-icon {
+    background: #f8d7da;
+  }
+  
+  .stat-info h3 {
+    font-size: 28px;
+    margin: 0;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  .stat-info p {
+    margin: 5px 0 0 0;
+    color: #666;
+    font-weight: 500;
+  }
+  
+  /* Acciones principales */
+  .acciones-principales {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-crear {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+  }
+  
+  .btn-crear:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(40, 167, 69, 0.4);
+  }
+  
+  .btn-crear:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  /* Mis promociones */
+  .mis-promociones {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mis-promociones h2 {
+    margin: 0 0 25px 0;
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .no-promociones {
+    text-align: center;
+    color: #666;
+    padding: 60px 20px;
+  }
+  
+  .no-promociones p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .promociones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+  }
+  
+  .promocion-card {
+    background: white;
+    border-radius: 15px;
+    padding: 25px;
+    border-left: 5px solid #ddd;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .promocion-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+  }
+  
+  .promocion-card.pendiente {
+    border-left-color: #ffc107;
+  }
+  
+  .promocion-card.aprobada {
+    border-left-color: #28a745;
+  }
+  
+  .promocion-card.rechazada {
+    border-left-color: #dc3545;
+  }
+  
+  .promocion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .promocion-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .estado-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .estado-badge.pendiente {
+    background: #fff3cd;
+    color: #856404;
+  }
+  
+  .estado-badge.aprobada {
+    background: #d1edff;
+    color: #155724;
+  }
+  
+  .estado-badge.rechazada {
+    background: #f8d7da;
+    color: #721c24;
+  }
+  
+  .precio-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .precio-original {
+    font-size: 16px;
+    color: #999;
+    text-decoration: line-through;
+  }
+  
+  .precio-promo {
+    font-size: 20px;
+    color: #28a745;
+    font-weight: 700;
+  }
+  
+  .descuento {
+    background: #ff4757;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .detalles p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+    color: #333;
+  }
+  
+  .btn-cerrar {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-body {
+    padding: 25px;
+  }
+  
+  .error {
+    background: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ffcdd2;
+  }
+  
+  .success {
+    background: #e8f5e8;
+    color: #2e7d32;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #c8e6c9;
+  }
+  
+  .paso h4 {
+    margin: 0 0 20px 0;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  /* Productos grid */
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .producto-card {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .producto-card:hover {
+    border-color: #667eea;
+    background: #f0f4ff;
+    transform: translateY(-2px);
+  }
+  
+  .producto-card h5 {
+    margin: 0 0 15px 0;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .producto-info p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 13px;
+  }
+  
+  /* Producto seleccionado */
+  .producto-seleccionado {
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .producto-seleccionado h5 {
+    margin: 0 0 10px 0;
+    color: #1565c0;
+    font-size: 18px;
+  }
+  
+  .producto-seleccionado p {
+    margin: 5px 0 15px 0;
+    color: #424242;
+  }
+  
+  .btn-cambiar {
+    background: transparent;
+    color: #1976d2;
+    border: 1px solid #1976d2;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .btn-cambiar:hover {
+    background: #1976d2;
+    color: white;
+  }
+  
+  /* Formulario promoción */
+  .formulario-promocion {
+    display: grid;
+    gap: 20px;
+  }
+  
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .field label {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .field input {
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+  
+  .field input:focus {
+    outline: none;
+    border-color: #667eea;
+  }
+  
+  .field small {
+    color: #666;
+    font-size: 13px;
+  }
+  
+  /* Preview promoción */
+  .preview-promocion {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .preview-promocion h5 {
+    margin: 0 0 15px 0;
+    color: #333;
+  }
+  
+  .preview-content p {
+    margin: 8px 0;
+    color: #555;
+    font-size: 14px;
+  }
+  
+  .validacion {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .validacion.valida {
+    background: #d1edff;
+    color: #155724;
+    border: 1px solid #bee5eb;
+  }
+  
+  .validacion.invalida {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .modal-footer {
+    display: flex;
+    gap: 15px;
+    padding: 20px 25px;
+    border-top: 1px solid #eee;
+  }
+  
+  .btn-cancelar {
+    background: #6c757d;
+    color: white;
+    flex: 1;
+  }
+  
+  .btn-cancelar:hover {
+    background: #5a6268;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .analista-dashboard {
+      padding: 20px 15px;
+    }
+    
+    .promociones-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .productos-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .precio-info {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    
+    .modal {
+      width: 95%;
+      max-width: none;
+    }
+    
+    .modal-footer {
+      flex-direction: column;
+    }
+  }

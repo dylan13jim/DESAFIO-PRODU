@@ -1,0 +1,161 @@
+<!-- src/app/paginas/gerente/gerente.component.html -->
+<app-encabezado></app-encabezado>
+
+<main class="gerente-dashboard">
+  <div class="container">
+    
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1>Dashboard Gerente</h1>
+      <p>Bienvenido {{ usuario?.nombre || usuario?.firstName + ' ' + usuario?.lastName }}</p>
+    </div>
+
+    <!-- Estadísticas -->
+    <div class="stats-grid">
+      <div class="stat-card pendientes">
+        <div class="stat-icon">⏳</div>
+        <div class="stat-info">
+          <h3>{{ obtenerContadores().pendientes }}</h3>
+          <p>Pendientes</p>
+        </div>
+      </div>
+      
+      <div class="stat-card aprobadas">
+        <div class="stat-icon">✅</div>
+        <div class="stat-info">
+          <h3>{{ obtenerContadores().aprobadas }}</h3>
+          <p>Aprobadas</p>
+        </div>
+      </div>
+      
+      <div class="stat-card rechazadas">
+        <div class="stat-icon">❌</div>
+        <div class="stat-info">
+          <h3>{{ obtenerContadores().rechazadas }}</h3>
+          <p>Rechazadas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filtros">
+      <button 
+        class="btn-filtro"
+        [class.activo]="filtroActual === 'pendiente'"
+        (click)="cambiarFiltro('pendiente')">
+        Pendientes ({{ obtenerContadores().pendientes }})
+      </button>
+      
+      <button 
+        class="btn-filtro"
+        [class.activo]="filtroActual === 'aprobada'"
+        (click)="cambiarFiltro('aprobada')">
+        Aprobadas ({{ obtenerContadores().aprobadas }})
+      </button>
+      
+      <button 
+        class="btn-filtro"
+        [class.activo]="filtroActual === 'rechazada'"
+        (click)="cambiarFiltro('rechazada')">
+        Rechazadas ({{ obtenerContadores().rechazadas }})
+      </button>
+    </div>
+
+    <!-- Lista de Promociones -->
+    <div class="promociones-container">
+      <div *ngIf="promocionesFiltradas.length === 0" class="no-promociones">
+        <p>No hay promociones {{ filtroActual === 'pendiente' ? 'pendientes' : filtroActual + 's' }}</p>
+      </div>
+
+      <div class="promociones-grid">
+        <div 
+          *ngFor="let promocion of promocionesFiltradas" 
+          class="promocion-card"
+          [class]="promocion.estado">
+          
+          <div class="promocion-header">
+            <h3>{{ promocion.producto.product_name }}</h3>
+            <span class="estado-badge" [class]="promocion.estado">
+              {{ promocion.estado | titlecase }}
+            </span>
+          </div>
+
+          <div class="promocion-info">
+            <div class="precio-info">
+              <div class="precio-original">${{ promocion.producto.product_list_price }}</div>
+              <div class="precio-promo">${{ promocion.precio_promocional }}</div>
+              <div class="descuento">{{ promocion.descuento_porcentaje }}% OFF</div>
+            </div>
+            
+            <div class="detalles">
+              <p><strong>Cantidad promocional:</strong> {{ promocion.cantidad_promocional }} unidades</p>
+              <p><strong>Rango permitido:</strong> {{ promocion.producto.product_min_promo_quantity }}-{{ promocion.producto.product_max_promo_quantity }} unidades</p>
+              <p><strong>Precio mínimo:</strong> ${{ promocion.producto.product_min_promo_price }}</p>
+              <p><strong>Creado por:</strong> {{ promocion.creado_por }}</p>
+              <p><strong>Email:</strong> {{ promocion.email_creador }}</p>
+              <p><strong>Fecha creación:</strong> {{ formatearFecha(promocion.fecha_creacion) }}</p>
+              <p *ngIf="promocion.comentarios"><strong>Comentarios:</strong> {{ promocion.comentarios }}</p>
+              <p *ngIf="promocion.fecha_revision"><strong>Revisado:</strong> {{ formatearFecha(promocion.fecha_revision) }} por {{ promocion.revisado_por }}</p>
+              
+              <!-- Validación -->
+              <div class="validacion" [class.valida]="validarPromocion(promocion).esValida" [class.invalida]="!validarPromocion(promocion).esValida">
+                <strong>Estado:</strong> {{ validarPromocion(promocion).mensaje }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Acciones solo para promociones pendientes -->
+          <div class="promocion-acciones" *ngIf="promocion.estado === 'pendiente'">
+            <button 
+              class="btn btn-aprobar"
+              (click)="abrirModal(promocion, 'aprobar')">
+              ✅ Aprobar
+            </button>
+            
+            <button 
+              class="btn btn-rechazar"
+              (click)="abrirModal(promocion, 'rechazar')">
+              ❌ Rechazar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Modal para comentarios -->
+<div class="modal-overlay" *ngIf="mostrarModal" (click)="cerrarModal()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>{{ accionModal === 'aprobar' ? 'Aprobar' : 'Rechazar' }} Promoción</h3>
+      <button class="btn-cerrar" (click)="cerrarModal()">×</button>
+    </div>
+    
+    <div class="modal-body">
+        <p><strong>Producto:</strong> {{ promocionSeleccionada?.producto?.product_name }}</p>
+        <p><strong>Precio original:</strong> ${{ promocionSeleccionada?.producto?.product_list_price }}</p>
+        <p><strong>Precio promocional:</strong> ${{ promocionSeleccionada?.precio_promocional }}</p>
+        <p><strong>Acción:</strong> {{ accionModal === 'aprobar' ? 'Aprobar' : 'Rechazar' }} promoción</p>
+      
+      <label>{{ accionModal === 'aprobar' ? 'Comentarios (opcional):' : 'Razón del rechazo:' }}</label>
+      <textarea 
+        [(ngModel)]="comentarios" 
+        name="comentarios"
+        rows="4" 
+        placeholder="{{ accionModal === 'aprobar' ? 'Comentarios sobre la aprobación...' : 'Explica por qué se rechaza...' }}">
+      </textarea>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn btn-cancelar" (click)="cerrarModal()">Cancelar</button>
+      <button 
+        class="btn"
+        [class.btn-aprobar]="accionModal === 'aprobar'"
+        [class.btn-rechazar]="accionModal === 'rechazar'"
+        (click)="confirmarAccion()">
+        {{ accionModal === 'aprobar' ? 'Aprobar' : 'Rechazar' }}
+      </button>
+    </div>
+  </div>
+</div>

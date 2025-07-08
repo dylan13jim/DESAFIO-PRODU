@@ -1,0 +1,24 @@
+<!-- src/app/componentes/encabezado/encabezado.component.html -->
+<header class="encabezado">
+    <div class="logo">
+        <img src="https://www.produbanco.com.ec/media/712553/web.png?format=webp" alt="Logo de la empresa">
+    </div>
+    
+    <nav class="navegacion">
+        <!-- Si NO hay usuario logueado - mostrar botones originales -->
+        <ng-container *ngIf="!usuario">
+            <a routerLink="/iniciar-sesion" class="boton">Iniciar sesión</a>
+            <a routerLink="/registro" class="boton">Registrarse</a>
+        </ng-container>
+
+        <!-- Si SÍ hay usuario logueado - mostrar info del usuario -->
+        <ng-container *ngIf="usuario">
+            <span class="usuario-info">
+                Hola, {{ usuario.nombre }} 
+                ({{ usuario.rol === 'analyst' ? 'Analista' : 'Gerente' }})
+            </span>
+            <button class="boton" (click)="irADashboard()">Dashboard</button>
+            <button class="boton boton-cerrar" (click)="cerrarSesion()">Cerrar Sesión</button>
+        </ng-container>
+    </nav>
+</header>

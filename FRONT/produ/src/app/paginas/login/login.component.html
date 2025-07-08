@@ -1,0 +1,60 @@
+<main class="login-page">
+    <div class="login-overlay"></div>
+    <div class="login-container">  
+        <div class="login-card">
+            <!-- Logo/Image instead of H1 -->
+            <div class="logo-container">
+                <img src="https://www.produbanco.com.ec/media/712553/web.png?format=webp" alt="Logo" class="logo">
+            </div>
+            
+            <!-- Mensaje de error -->
+            <div class="error" *ngIf="error">{{ error }}</div>
+            
+            <!-- Formulario -->
+            <form (ngSubmit)="login()">
+                
+                <!-- Ultimatix -->
+                <div class="field">
+                    <label>Ultimatix:</label>
+                    <input 
+                        type="text" 
+                        [(ngModel)]="ultimatix" 
+                        name="ultimatix"
+                        placeholder="Ejemplo: 2987220">
+                </div>
+                
+                <!-- Contraseña -->
+                <div class="field">
+                    <label>Contraseña:</label>
+                    <input 
+                        type="password" 
+                        [(ngModel)]="password" 
+                        name="password"
+                        placeholder="Ingresa tu contraseña">
+                </div>
+                
+                <!-- Rol -->
+                <div class="field">
+                    <label>Rol:</label>
+                    <select [(ngModel)]="rol" name="rol">
+                        <option value="">Selecciona tu rol</option>
+                        <option value="analyst">Analista de Mercado</option>
+                        <option value="manager">Gerente de Ventas</option>
+                    </select>
+                </div>
+                
+                <!-- Botón -->
+                <button type="submit" class="btn-login">Iniciar Sesión</button>        
+            </form>
+
+            <!-- Footer del formulario - NUEVO -->
+            <div class="login-footer">
+                <p>¿No tienes una cuenta?</p>
+                <button type="button" class="btn-link" (click)="irARegistro()">
+                    Regístrate aquí
+                </button>
+            </div>
+            
+        </div>
+    </div>
+</main>

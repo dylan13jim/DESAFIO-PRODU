@@ -1,0 +1,190 @@
+.login-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-image: url('./imagenes/2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+ 
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1; /* above the overlay */
+}
+
+.login-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6); /* Darker layer for better contrast */
+    z-index: 0;
+}
+ 
+.login-card {
+    background: rgba(255, 255, 255, 0.15); /* Slightly transparent background for the card */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* More pronounced shadow */
+    backdrop-filter: blur(5px); /* Slightly less blur for a cleaner look */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+    display: flex; /* Use flexbox to organize content */
+    flex-direction: column; /* Organize elements in a column */
+    align-items: center; /* Center elements horizontally */
+}
+ 
+.logo-container {
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%; /* Ensures the logo container takes full available width */
+}
+
+.logo { /* Logo image styling */
+    width: 260px; /* Smaller logo width */
+    height: auto; /* Maintains aspect ratio */
+    max-width: 100%; /* Ensures the image doesn't overflow its parent container */
+    display: block; /* Removes extra space below the image */
+    margin: 0 auto; /* Centers the image if it's smaller than its container */
+}
+
+h1 { /* This rule is no longer used for the main heading */
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+ 
+.error {
+    background: rgba(255, 68, 68, 0.1); /* Subtle error background */
+    color: var(--error-red);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 68, 68, 0.2);
+    width: 100%; /* Ensures the error message takes full width */
+}
+ 
+.field {
+    margin-bottom: 20px;
+    width: 100%; /* Ensures fields take full width */
+}
+ 
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--light-gray-text); /* Lighter label color */
+}
+ 
+input, select {
+    width: 100%;
+    padding: 8px 0; /* Reduced padding, only bottom */
+    border: none; /* Remove all borders */
+    border-bottom: 1px solid var(--input-border-color); /* Only bottom border */
+    border-radius: 0; /* Remove border-radius */
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: transparent; /* Transparent background */
+    color: var(--white); /* White text for inputs */
+    transition: border-color 0.3s ease;
+}
+ 
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* More opaque placeholder text */
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-bottom-color: var(--input-focus-color); /* Green bottom border on focus */
+    box-shadow: none; /* Remove box-shadow on focus */
+}
+ 
+.btn-login {
+    width: 100%;
+    background: var(--dark-green); /* Dark green button */
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px; /* Increased margin top for button */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+ 
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(26, 83, 26, 0.4); /* Shadow matching dark green */
+    background: var(--light-green); /* Light green on hover */
+}
+ 
+.test-data {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    color: var(--light-gray-text);
+    width: 100%; /* Ensures it takes full width */
+}
+ 
+.test-data h3 {
+    margin: 0 0 15px 0;
+    color: var(--white);
+    font-size: 16px;
+}
+ 
+.test-data p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: var(--light-gray-text);
+}
+ 
+@media (max-width: 480px) {
+    .login-card {
+      padding: 25px;
+    }
+    
+    h1 {
+      font-size: 24px;
+    }
+}
+
+/* Add these styles to your existing login.component.scss: */
+
+.login-footer {
+    margin-top: 30px;
+    text-align: center;
+    color: var(--light-gray-text);
+    width: 100%; /* Ensures it takes full width */
+}
+ 
+.login-footer p {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+}
+ 
+.btn-link {
+    background: none;
+    border: none;
+    color: var(--white); /* White link color */
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+ 
+.btn-link:hover {
+    color: var(--light-green); /* Light green on link hover */
+    text-decoration: underline;
+}
