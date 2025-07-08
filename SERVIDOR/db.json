@@ -1,0 +1,320 @@
+{
+  "roles": [
+    {
+      "role_id": 1,
+      "role_name": "analyst",
+      "role_description": "Analista de Mercado",
+      "role_supported": true,
+      "id": "ab81"
+    },
+    {
+      "role_id": 2,
+      "role_name": "manager",
+      "role_description": "Gerente de Ventas",
+      "role_supported": true,
+      "id": "113f"
+    },
+    {
+      "role_id": 3,
+      "role_name": "accounting",
+      "role_description": "Contabilidad",
+      "role_supported": false,
+      "id": "cac7"
+    }
+  ],
+  "users": [
+    {
+      "user_id": 1,
+      "user_gender": "female",
+      "role": "analyst",
+      "user_name": {
+        "first_name": "Ana",
+        "last_name": "Gomez"
+      },
+      "user_location": {
+        "country": "Spain",
+        "city": "Madrid"
+      },
+      "user_email": "ana.gomez@tcs.com",
+      "user_ultimatix": "2987220",
+      "user_password": "ana123@",
+      "user_phone": "+34 123456789",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/women/79.jpg"
+      },
+      "id": "412a"
+    },
+    {
+      "user_id": 2,
+      "user_gender": "male",
+      "role": "manager",
+      "user_name": {
+        "first_name": "Carlos",
+        "last_name": "Lopez"
+      },
+      "user_location": {
+        "country": "Mexico",
+        "city": "Mexico City"
+      },
+      "user_email": "carlos.lopez@tcs.com",
+      "user_ultimatix": "2987221",
+      "user_password": "carlos123@",
+      "user_phone": "+52 987654321",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/men/29.jpg"
+      },
+      "id": "35a7"
+    },
+    {
+      "user_id": 3,
+      "user_gender": "female",
+      "role": "accounting",
+      "user_name": {
+        "first_name": "Maria",
+        "last_name": "Fernandez"
+      },
+      "user_location": {
+        "country": "Argentina",
+        "city": "Buenos Aires"
+      },
+      "user_email": "maria.fernandez@tcs.com",
+      "user_ultimatix": "2987222",
+      "user_password": "MariaNanFer123@",
+      "user_phone": "+54 123456789",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/women/48.jpg"
+      },
+      "id": "269b"
+    },
+    {
+      "user_id": 4,
+      "user_gender": "male",
+      "role": "analyst",
+      "user_name": {
+        "first_name": "Juan",
+        "last_name": "Martinez"
+      },
+      "user_location": {
+        "country": "Colombia",
+        "city": "Bogota"
+      },
+      "user_email": "j.matinez@tcs.com",
+      "user_ultimatix": "2987223",
+      "user_password": "gatitosRusos24@",
+      "user_phone": "+57 123456789",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/men/81.jpg"
+      },
+      "id": "8185"
+    },
+    {
+      "user_id": 5,
+      "user_gender": "female",
+      "role": "manager",
+      "user_name": {
+        "first_name": "Laura",
+        "last_name": "Perez"
+      },
+      "user_location": {
+        "country": "Chile",
+        "city": "Santiago"
+      },
+      "user_email": "lau.perez@tcs.com",
+      "user_ultimatix": "2987224",
+      "user_password": "Zucaritas10*",
+      "user_phone": "+56 123456789",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/women/28.jpg"
+      },
+      "id": "c17b"
+    },
+    {
+      "id": "f556",
+      "user_id": 6,
+      "user_gender": "male",
+      "role": "developer",
+      "user_name": {
+        "first_name": "Diego",
+        "last_name": "Rojas"
+      },
+      "user_location": {
+        "country": "Peru",
+        "city": "Lima"
+      },
+      "user_email": "diego.rojas@tcs.com",
+      "user_ultimatix": "2987225",
+      "user_password": "diego123@",
+      "user_phone": "+51 987654321",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/men/99.jpg"
+      }
+    },
+    {
+      "id": "qrgv",
+      "user_id": 874976,
+      "user_gender": "not_specified",
+      "role": "analyst",
+      "user_name": {
+        "first_name": "Dylan",
+        "last_name": "Jimenez"
+      },
+      "user_location": {
+        "country": "Spain",
+        "city": "quito"
+      },
+      "user_email": "dylan1@tcs.com",
+      "user_ultimatix": "2905025",
+      "user_password": "12345678",
+      "user_phone": "0963500060",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/women/37.jpg"
+      }
+    },
+    {
+      "id": "nmap",
+      "user_id": 196600,
+      "user_gender": "not_specified",
+      "role": "manager",
+      "user_name": {
+        "first_name": "Ricky",
+        "last_name": "Sex"
+      },
+      "user_location": {
+        "country": "Mexico",
+        "city": "mdf"
+      },
+      "user_email": "ric@tcs.com",
+      "user_ultimatix": "2905021",
+      "user_password": "123456",
+      "user_phone": "0963500061",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/men/8.jpg"
+      }
+    },
+    {
+      "id": "2mu1",
+      "user_id": 490682,
+      "user_gender": "not_specified",
+      "role": "manager",
+      "user_name": {
+        "first_name": "Tobias",
+        "last_name": "Tello"
+      },
+      "user_location": {
+        "country": "Spain",
+        "city": "madrid"
+      },
+      "user_email": "tello@tcs.com",
+      "user_ultimatix": "2905031",
+      "user_password": "123456",
+      "user_phone": "096215521",
+      "user_picture": {
+        "url": "https://randomuser.me/api/portraits/men/89.jpg"
+      }
+    }
+  ],
+  "products": [
+    {
+      "product_id": 1,
+      "product_name": "Laptop Asus ZenBook",
+      "product_list_price": 59.99,
+      "product_min_promo_quantity": 3,
+      "product_max_promo_quantity": 10,
+      "product_min_promo_price": 49.99,
+      "id": "7aeb"
+    },
+    {
+      "product_id": 2,
+      "product_name": "Smartphone Samsung Galaxy",
+      "product_list_price": 29.99,
+      "product_min_promo_quantity": 2,
+      "product_max_promo_quantity": 5,
+      "product_min_promo_price": 24.99,
+      "id": "24f4"
+    },
+    {
+      "product_id": 3,
+      "product_name": "Tablet Apple iPad",
+      "product_list_price": 39.99,
+      "product_min_promo_quantity": 2,
+      "product_max_promo_quantity": 5,
+      "product_min_promo_price": 34.99,
+      "id": "9b3f"
+    },
+    {
+      "product_id": 4,
+      "product_name": "Smartwatch Fitbit",
+      "product_list_price": 19.99,
+      "product_min_promo_quantity": 1,
+      "product_max_promo_quantity": 3,
+      "product_min_promo_price": 14.99,
+      "id": "4967"
+    },
+    {
+      "product_id": 5,
+      "product_name": "Wireless Headphones Sony",
+      "product_list_price": 24.99,
+      "product_min_promo_quantity": 2,
+      "product_max_promo_quantity": 5,
+      "product_min_promo_price": 19.99,
+      "id": "9ef3"
+    },
+    {
+      "product_id": 6,
+      "product_name": "Bluetooth Speaker JBL",
+      "product_list_price": 34.99,
+      "product_min_promo_quantity": 2,
+      "product_max_promo_quantity": 5,
+      "product_min_promo_price": 29.99,
+      "id": "1849"
+    },
+    {
+      "product_id": 7,
+      "product_name": "Gaming Mouse Logitech",
+      "product_list_price": 19.99,
+      "product_min_promo_quantity": 1,
+      "product_max_promo_quantity": 3,
+      "product_min_promo_price": 14.99,
+      "id": "04a0"
+    },
+    {
+      "product_id": 8,
+      "product_name": "Wireless Keyboard Logitech",
+      "product_list_price": 19.99,
+      "product_min_promo_quantity": 1,
+      "product_max_promo_quantity": 4,
+      "product_min_promo_price": 14.99,
+      "id": "55a0"
+    },
+    {
+      "product_id": 9,
+      "product_name": "4K Monitor Dell",
+      "product_list_price": 199.99,
+      "product_min_promo_quantity": 2,
+      "product_max_promo_quantity": 5,
+      "product_min_promo_price": 179.99,
+      "id": "04ee"
+    },
+    {
+      "product_id": 10,
+      "product_name": "Gaming Chair DXRacer",
+      "product_list_price": 249.99,
+      "product_min_promo_quantity": 3,
+      "product_max_promo_quantity": 6,
+      "product_min_promo_price": 229.99,
+      "id": "b04e"
+    },
+    {
+      "id": "vqzv",
+      "product_id": 11,
+      "product_name": "iPhone 15 Pro Max",
+      "product_list_price": 1299.99,
+      "product_min_promo_quantity": 2,
+      "product_max_promo_quantity": 10,
+      "product_min_promo_price": 1199.99,
+      "created_by": "f556",
+      "created_by_email": "diego.rojas@tcs.com",
+      "created_at": "2025-07-07T17:33:03.788Z"
+    }
+  ]
+}
